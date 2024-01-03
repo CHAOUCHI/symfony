@@ -742,6 +742,16 @@ class Finder implements \IteratorAggregate, \Countable
         return iterator_count($this->getIterator());
     }
 
+     /**
+     * Return an array of files
+     * 
+     * @param bool $filePathAsKey if false the keys of the array will be the absolute path of each file, otherwise key are numeric stating at 0.
+     * @return array an array of \SplFileInfo
+     */
+    public function toArray(bool $filePathAsKey = false){
+        return iterator_to_array($this,$filePathAsKey);
+    }
+
     private function searchInDirectory(string $dir): \Iterator
     {
         $exclude = $this->exclude;
